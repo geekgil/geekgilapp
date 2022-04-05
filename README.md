@@ -6,6 +6,10 @@ Projeto simples em React que consome dados de uma API feita em Spring Boot e mos
 
 Projeto feito em React, usando create-react-app para build, Axios para consumir a API, e Bootstrap para a estilização da interface. A seguir, o conteúdo padrão do README gerado pelo Create React App.
 
+## Próximos passos do projeto
+
+A próxima grande atualização desse projeto será relacionada a um ponto fraco do sistema (tanto este cliente quanto a API REST que o serve): O sistema é todo baseado em chamadas com o ID dos colaboradores. Isso não é muito seguro ou conveniente. O sistema será atualizado para funcionar baseado em usernames, que será um novo campo adicionado à API e ao cliente. Eu já consegui resolver isto no lado da API, mas estou tendo dificuldades com o cliente (Minha maior paixão é Spring e Java, e não React, como se percebe kkkkkkkk).
+
 ## Create React App info
 ### Getting Started with Create React App
 
