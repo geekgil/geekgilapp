@@ -23,7 +23,14 @@ class CreateEmployeeComponent extends Component {
 
         // step 4
         if(this.state.id === '_add'){
-            return
+            return EmployeeService.createEmployee().then( (res) =>{
+                let employee = res.data;
+                this.setState({
+                    firstName: employee.firstName,
+                    lastName: employee.lastName,
+                    emailId : employee.emailId
+                });
+            });
         }else{
             EmployeeService.getEmployeeById(this.state.id).then( (res) =>{
                 let employee = res.data;
