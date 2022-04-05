@@ -7,12 +7,12 @@ class CreateEmployeeComponent extends Component {
 
         this.state = {
             // step 2
-            username: this.props.match.params.username,
+            id: this.props.match.params.id,
             firstName: '',
             lastName: '',
             emailId: ''
         }
-        this.changeUsernameHandler = this.changeUsernameHandler.bind(this);
+//        this.changeUsernameHandler = this.changeUsernameHandler.bind(this);
         this.changeFirstNameHandler = this.changeFirstNameHandler.bind(this);
         this.changeLastNameHandler = this.changeLastNameHandler.bind(this);
         this.saveOrUpdateEmployee = this.saveOrUpdateEmployee.bind(this);
@@ -22,13 +22,12 @@ class CreateEmployeeComponent extends Component {
     componentDidMount(){
 
         // step 4
-        if(this.state.username === '_add'){
+        if(this.state.id === '_add'){
             return
         }else{
-            EmployeeService.getEmployeeByUsername(this.state.username).then( (res) =>{
+            EmployeeService.getEmployeeById(this.state.id).then( (res) =>{
                 let employee = res.data;
                 this.setState({
-                    username: employee.username,
                     firstName: employee.firstName,
                     lastName: employee.lastName,
                     emailId : employee.emailId
@@ -38,7 +37,7 @@ class CreateEmployeeComponent extends Component {
     }
     saveOrUpdateEmployee = (e) => {
         e.preventDefault();
-        let employee = {username:this.state.username, firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId};
+        let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId};
         console.log('employee => ' + JSON.stringify(employee));
 
         // step 5
@@ -47,15 +46,15 @@ class CreateEmployeeComponent extends Component {
                 this.props.history.push('/employees');
             });
         }else{
-            EmployeeService.updateEmployee(employee, this.state.username).then( res => {
+            EmployeeService.updateEmployee(employee, this.state.id).then( res => {
                 this.props.history.push('/employees');
             });
         }
     }
     
-    changeUsernameHandler= (event) => {
+ /*   changeUsernameHandler= (event) => {
         this.setState({username: event.target.value});
-    }
+    } */
 
     changeFirstNameHandler= (event) => {
         this.setState({firstName: event.target.value});
@@ -92,11 +91,6 @@ class CreateEmployeeComponent extends Component {
                                 }
                                 <div className = "card-body">
                                     <form>
-                                        <div className = "form-group">
-                                            <label> Username: </label>
-                                            <input placeholder="Username" name="username" className="form-control" 
-                                                value={this.state.username} onChange={this.changeUsernameHandler}/>
-                                        </div>
                                         <div className = "form-group">
                                             <label> First Name: </label>
                                             <input placeholder="First Name" name="firstName" className="form-control" 

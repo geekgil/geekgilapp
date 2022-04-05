@@ -6,13 +6,13 @@ class ViewEmployeeComponent extends Component {
         super(props)
 
         this.state = {
-            username: this.props.match.params.username,
+            id: this.props.match.params.id,
             employee: {}
         }
     }
 
     componentDidMount(){
-        EmployeeService.getEmployeeByUsername(this.state.username).then( res => {
+        EmployeeService.getEmployeeById(this.state.id).then( res => {
             this.setState({employee: res.data});
         })
     }
@@ -24,10 +24,6 @@ class ViewEmployeeComponent extends Component {
                 <div className = "card col-md-6 offset-md-3">
                     <h3 className = "text-center"> View Employee Details</h3>
                     <div className = "card-body">
-                        <div className = "row">
-                            <label> <strong>Employee Username:</strong> </label>
-                            <div> { this.state.employee.username }</div>
-                        </div>
                         <div className = "row">
                             <label> <strong>Employee First Name:</strong> </label>
                             <div> { this.state.employee.firstName }</div>

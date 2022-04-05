@@ -13,16 +13,16 @@ class ListEmployeeComponent extends Component {
         this.deleteEmployee = this.deleteEmployee.bind(this);
     }
 
-    deleteEmployee(username){
-        EmployeeService.deleteEmployee(username).then( res => {
-            this.setState({employees: this.state.employees.filter(employee => employee.username !== username)});
+    deleteEmployee(id){
+        EmployeeService.deleteEmployee(id).then( res => {
+            this.setState({employees: this.state.employees.filter(employee => employee.id !== id)});
         });
     }
-    viewEmployee(username){
-        this.props.history.push(`/view-employee/${username}`);
+    viewEmployee(id){
+        this.props.history.push(`/view-employee/${id}`);
     }
-    editEmployee(username){
-        this.props.history.push(`/add-employee/${username}`);
+    editEmployee(id){
+        this.props.history.push(`/add-employee/${id}`);
     }
 
     componentDidMount(){
@@ -48,7 +48,6 @@ class ListEmployeeComponent extends Component {
 
                             <thead>
                                 <tr>
-                                    <th> Employee Username</th>
                                     <th> Employee First Name</th>
                                     <th> Employee Last Name</th>
                                     <th> Employee Email Id</th>
@@ -60,7 +59,6 @@ class ListEmployeeComponent extends Component {
                                     this.state.employees.map(
                                         employee => 
                                         <tr key = {employee.id}>
-                                             <td> { employee.username} </td>
                                              <td> { employee.firstName} </td>   
                                              <td> {employee.lastName}</td>
                                              <td> {employee.emailId}</td>

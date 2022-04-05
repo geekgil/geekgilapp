@@ -12,16 +12,16 @@ class EmployeeService {
         return axios.post(EMPLOYEE_API_BASE_URL, employee);
     }
 
-    getEmployeeByUsername(employeeUsername){
-        return axios.get(EMPLOYEE_API_BASE_URL + '/' + employeeUsername);
+    getEmployeeById(id){
+        return axios.get(EMPLOYEE_API_BASE_URL + '/' + id);
     }
 
-    updateEmployee(employee, employeeUsername){
-        return axios.put(EMPLOYEE_API_BASE_URL + '/' + employeeUsername, employee);
+    updateEmployee(employee, id){
+        return axios.put(EMPLOYEE_API_BASE_URL + '/' + id, employee);
     }
 
-    deleteEmployee(employeeUsername){
-        return axios.delete(EMPLOYEE_API_BASE_URL + '/' + employeeUsername);
+    deleteEmployee(id){
+        return axios.delete(EMPLOYEE_API_BASE_URL + '/' + id);
     }
 }
 
