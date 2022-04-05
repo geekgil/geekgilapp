@@ -1,4 +1,4 @@
-#Employees App
+# Employees App
 
 Projeto simples em React que consome dados de uma API feita em Spring Boot e mostra em sua interface, podendo serem editados, adicionados ou excluídos os colaboradores.
 
@@ -6,7 +6,7 @@ Projeto simples em React que consome dados de uma API feita em Spring Boot e mos
 
 Projeto feito em React, usando create-react-app para build, Axios para consumir a API, e Bootstrap para a estilização da interface. A seguir, o conteúdo padrão do README gerado pelo Create React App.
 
-##Create React App info
+## Create React App info
 ### Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
