@@ -23,14 +23,7 @@ class CreateEmployeeComponent extends Component {
 
         // step 4
         if(this.state.id === '_add'){
-            return EmployeeService.createEmployee().then( (res) =>{
-                let employee = res.data;
-                this.setState({
-                    firstName: employee.firstName,
-                    lastName: employee.lastName,
-                    emailId : employee.emailId
-                });
-            });
+            return
         }else{
             EmployeeService.getEmployeeById(this.state.id).then( (res) =>{
                 let employee = res.data;
@@ -51,7 +44,7 @@ class CreateEmployeeComponent extends Component {
         if(this.state.id === '_add'){
             EmployeeService.createEmployee(employee).then(res =>{
                 this.props.history.push('/employees');
-            });
+            }).catch(erro=>{console.log(erro)});
         }else{
             EmployeeService.updateEmployee(employee, this.state.id).then( res => {
                 this.props.history.push('/employees');
